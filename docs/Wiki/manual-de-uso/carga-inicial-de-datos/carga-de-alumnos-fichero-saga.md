@@ -4,7 +4,7 @@ Hasta ahora tenemos cargados los los grupos de nuestro centro ahora es el moment
 
 Recuerda que Django-Aula solo permite la importación de alumnos desde una exportación hecha desde SAGA, el proceso de obtención de esta exportación esta explicado aquí:
 
-{% page-ref page="../../anexos/exportacion-saga.md" %}
+[comment]: {% page-ref page="../../anexos/exportacion-saga.md" %}
 
 Una vez tenemos el fichero con los alumnos comprobamos que tiene la siguiente estructura:
 
