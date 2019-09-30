@@ -1,0 +1,6 @@
+exclude:
+  - Wiki
+  - Arduino
+  - installacio
+  - logo
+  - manuals
