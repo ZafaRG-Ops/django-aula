@@ -7,6 +7,7 @@ SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = Documentacio
 SOURCEDIR     = .
 BUILDDIR      = _build
+GH_PAGES_SOURCES = source code libuv Makefile
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -25,8 +26,8 @@ gh-pages:
 	git checkout master
 	git reset HEAD
 	make html
-	mv -fv $(BUILDDIR)/html/* ./
-	rm -rf gh-pages $(BUILDDIR)
+	mv -fv build/html/* ./
+	rm -rf $(GH_PAGES_SOURCES) build
 	git add -A
 	git commit -m "Generated gh-pages for `git log master -1 --pretty=short --abbrev-commit`"
 	git push origin gh-pages
