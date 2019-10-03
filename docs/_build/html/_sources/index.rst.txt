@@ -28,7 +28,31 @@ Menu de de navegacion de la aplicacion
 
 *Gestio*
 
+    * En esta seccion podemos realizar una reserva para una clase o podemos realizar una busqueda de alumos o professores
+
+    .. image:: 3.png
+        :width: 600
+
 *Psicopedagog*
 
-*Coder*
+    .. image:: psicopedagog.png
+        :width: 600
+
+*Coord*
+
+    * En la seccion de Coord podemos cordinar tanto alumons o professores
+
+    .. image:: coord.png
+        :width: 600
+
+    .. image:: coordalumnes.png
+        :width: 600
+
+    .. image:: coordprofes.png
+        :width: 600
+            
+*Admin*
+
+    .. image:: admin.png
+        :width: 600
         
