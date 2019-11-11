@@ -1,0 +1,7 @@
+First task 
+
+1. Finde Logo
+2. Every page has a logo
+3. Locate a tamplate file 
+4. FFT First Fail Test
+5. Functional test 	
