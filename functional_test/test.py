@@ -7,4 +7,4 @@ import unittest
 class NewVisitorTest(unittest.TestCase):
 
     def test_find_logo_in_home_page(self):
-        assert False,"Do teh tetsing"
+        assert False,"Do the testing"
