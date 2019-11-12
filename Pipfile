@@ -1,0 +1,29 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+openpyxl = "*"
+appy = {git = "https://github.com/lino-framework/appypod.git"}
+django-extensions = "*"
+lxml = "*"
+django-appypod = "*"
+six = "*"
+django-debug-toolbar = "*"
+python-dateutil = "*"
+django-tables2 = "*"
+icalendar = "*"
+django-appconf = "*"
+viivakoodi = "*"
+typing = "*"
+selenium = "*"
+pisa = "*"
+Django = "*"
+Pillow = "*"
+XlsxWriter = "*"
+
+[requires]
+python_version = "3.6"
