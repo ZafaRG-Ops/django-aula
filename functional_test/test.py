@@ -29,6 +29,9 @@ class NewVisitorTest(LiveServerTestCase):
         # She tries to find a logo tag in homepage
         logo_tags = self.browser.find_elements_by_css_selector('div#companyLogo')
         self.assertEqual(len(logo_tags), 1)
+
+        self.assertIn('Logo-JdA-131x1311.png', str(logo_tags[0].value_of_css_property('background-image')))
+
         self.fail('Finish the test!')
 
         """

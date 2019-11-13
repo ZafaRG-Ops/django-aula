@@ -21,3 +21,7 @@ aula/settings_local.py
 .idea/*
 .idea
 aula/static
+
+# vim editor ignorables
+*~
+.*.swp
