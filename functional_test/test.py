@@ -14,12 +14,12 @@ class NewVisitorTest(LiveServerTestCase):
 
 	def wait_for_row_in_list_table(self, row_text):
 		start_time = time.time()
-			while True:  
-				try:
-					table = self.browser.find_element_by_id('id_list_table')  
-					rows = table.find_elements_by_tag_name('tr')
-					self.assertIn(row_text, [row.text for row in rows])
-					return  
+		while True:  
+			try:
+				table = self.browser.find_element_by_id('id_list_table')  
+				rows = table.find_elements_by_tag_name('tr')
+				self.assertIn(row_text, [row.text for row in rows])
+				return  
 			except (AssertionError, WebDriverException) as e:  
 				if time.time() - start_time > MAX_WAIT:  
 					raise e  
@@ -38,8 +38,6 @@ class NewVisitorTest(LiveServerTestCase):
 
 
 	def test_check_logo_in_homepage(self):
-		start_time = time.time()
-		time.sleep(10)
 		# Marta has heard about a cool new online django-aula app. 
 		# She goes to check out its homepage. 
 		self.browser.get(self.live_server_url)
