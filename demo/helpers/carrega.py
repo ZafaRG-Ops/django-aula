@@ -36,11 +36,14 @@ def fesCarrega( ):
         userDemo.set_password( 'djAu' )
     
     nivellsCursosGrups = ( 
-                            ( 'ESO', 
-                              (
-                                 ( 1, ( 'A','B','C'), ),
-                                 ( 2, ( 'A','B',), ),
-                                 ( 3, ( 'A','B',), ),
+                            ( 'ESO',        # nivell
+                              (             # grups cursos
+
+                                  # curs    # grups
+                                 ( 1,       ( 'A','B','C'), ),
+                                 ( 2,       ( 'A','B',), ),
+                                 ( 3,       ( 'A','B',), ),
+
                               ),
                             ),
                             ( 'CFI',

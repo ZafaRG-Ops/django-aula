@@ -61,7 +61,7 @@ PostgreSQL
 
 ::
 
-    $ sudo apt install apache2 libapache2-mod-wsgi-py3 postgresql postgresql-server-dev-10
+    $ sudo apt install apache2 libapache2-mod-wsgi-py3 postgresql postgresql-server-dev-10 postgresql-contrib
     $ sudo su postgres
     $ psql
     postgres=# CREATE DATABASE djau2019;
