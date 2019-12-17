@@ -18,11 +18,11 @@
 {% endblock %}
  
 {% block content  %}
-	<p class="well well-small">
+	<p class="well well-small" style="width: 80%;float: right;">
   	<span class="glyphicon glyphicon-user"></span> {{ professor }}
   </p>
 	
-	<div class="row" style="padding-bottom: 5px;">
+	<div class="row" style="padding-bottom: 5px; width: 80%;float: right;">
 	  <div class="col-sm-2 col-xs-12"></div>
 	  {% for dia_setmana, dia_complet, esDataActual in calendari %}
 	  <div class="col-sm-2 col-xs-12 {% if not esDataActual %}hidden-xs{% endif %}">
@@ -44,7 +44,7 @@
               {% for assignatura, grup, aula, pk, color, color2, resum, esGuardia, hi_ha_sortida, esReservaManual in imparticions %}
                 <div class="imparticio" style="padding-bottom: 5px; margin-left:5px; margin-right: 5px;" >
                   {%if esGuardia%}
-                   <div style="border: 1px solid gray;">
+                   <div style="border: 1px solid gray;float: right;">
                       <div style="text-align: right;background-color: white;">
                        -Guardia- <a style="color:#444444;" href="/presencia/esborraGuardia/{{pk}}">[&times;]</a>
                       </div>

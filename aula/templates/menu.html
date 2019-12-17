@@ -1,94 +1,98 @@
 {% load customTemplateTags %}
 
-<div id="header" style="width: 14%;"> 
-  <div class="navbar navbar-inverse"> 
-      <div class="collapse navbar-collapse navbar-ex1-collapse navbar-left">
-        <ul class="nav navbar-nav" >
-          <li>
-            <div class="navbar-header" >
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              </button>
-              <a href="/" class="navbar-brand">django-aula</a>
-            </div>  
-          </li>
-        {% for item in menu.items %}
-        <br/>
-	      <li  class="{{item.active}}" >
-		      <a href="{{item.url}}">{{item.label}} {% if item.alerta %}<span class="glyphicon glyphicon-exclamation-sign" style="color:red"></span>{%endif%} </a> 
-	      </li>
-		    {% endfor %}
-        <br/>
-        <li>
-          <div class="navbar-header">
-            <ul class="nav navbar-nav">
-                {% if user.is_authenticated %}
-                    <li class="dropdown">     
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        {{menu.nomusuari}}
-                        <b class="caret"></b>
-                      </a>
-                      <ul class="dropdown-menu">
-                        {%if not menu.esalumne %}<li><a href="/usuaris/canviDadesUsuari/">El meu nom i correu.</a></li>{% endif %}
-                        <li><a href="{% url 'usuari__dades__canvi_passwd' %}">Canvi de paraula de pas (password)</a></li>
-                        {% if sessioImpersonada %}
-                          <li class="divider"></li>
-                          <li><a tabindex="-1" href="/usuaris/impersonacio/">Impersonació / Level4</a></li>
-                          <li><a tabindex="-1" href="/usuaris/resetImpersonacio/">Sortir mode impersonalitzat</a></li>
-                        {% else %}
-                          {% ifusergroup direcció %}
-                    <li class="divider"></li>
-                              <li><a href="/usuaris/impersonacio/">Impersonació / Level4</a></li>
-                          {% endifusergroup %}
-                        {% endif %}   
-                      </ul>
-                    </li>
-                    <li><a href="/logout/"><span class="glyphicon glyphicon-log-out"></span></a></li>
+<div id="todo" style="width: 100%;">
+<style type="text/css">
+  .container { background-color: white; }
+  .select2-container {width: 50% !important;}
+  .todo {
+    background-position: right !important;
+    background-color: red;
+
+  }
+</style>
+    <div id="header" style="width: 12%;position: absolute;" > 
+      <div class="navbar navbar-inverse"> 
+          <div class="collapse navbar-collapse navbar-ex1-collapse navbar-left">
+            <ul class="nav navbar-nav" >
+              <li>
+                <div class="navbar-header" >
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+                  <a href="/" class="navbar-brand">django-aula</a>
+                </div>  
+              </li>
+
+            {% for item in menu.items %}
+    	      <li  class="{{item.active}}" >
+    		      <a href="{{item.url}}">{{item.label}} {% if item.alerta %}<span class="glyphicon glyphicon-exclamation-sign" style="color:red"></span>{%endif%} </a> 
+    	      </li>
+    		    {% endfor %}
+            <li>
+              <div class="navbar-header">
+                <ul class="nav navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li class="dropdown">     
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            {{menu.nomusuari}}
+                            <b class="caret"></b>
+                          </a>
+                          <ul class="dropdown-menu">
+                            {%if not menu.esalumne %}<li><a href="/usuaris/canviDadesUsuari/">El meu nom i correu.</a></li>{% endif %}
+                            <li><a href="{% url 'usuari__dades__canvi_passwd' %}">Canvi de paraula de pas (password)</a></li>
+                            {% if sessioImpersonada %}
+                              <li class="divider"></li>
+                              <li><a tabindex="-1" href="/usuaris/impersonacio/">Impersonació / Level4</a></li>
+                              <li><a tabindex="-1" href="/usuaris/resetImpersonacio/">Sortir mode impersonalitzat</a></li>
+                            {% else %}
+                              {% ifusergroup direcció %}
+                        <li class="divider"></li>
+                                  <li><a href="/usuaris/impersonacio/">Impersonació / Level4</a></li>
+                              {% endifusergroup %}
+                            {% endif %}   
+                          </ul>
+                        </li>
+                        <li><a href="/logout/"><span class="glyphicon glyphicon-log-out"></span></a></li>
+                      {% else %}
+                      <li><a tabindex="-1" href="/">Login</a></li>        
+                      {% endif %}
+                  </ul>
+                <div class="row">
+                {% if menu.subitems %}
+                <div class="col-md-2" style="width: 100%">
+
+                <ul class="nav nav-pills nav-stacked hidden-print" id="submenu">
+                  {% for item in menu.subitems %}
+                      {% if item.subsubitems %}
+                      <li role="presentation" class="dropdown {{item.active}}" >
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{item.label}} {% if item.medalla %}<span class="label label-{{item.medalla.tipus}}">{{ item.medalla.valor }}</span>{% endif %} <span class="caret" {% if item.active %} style="border-top:4px solid white;" {% endif %}></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                        {% for subsubitem in item.subsubitems %}
+                          <li><a href="{{subsubitem.url}}" >{{subsubitem.label}} {% if subsubitem.medalla %}<span class="label label-{{item.medalla.tipus}}">{{ subsubitem.medalla.valor }}</span>{% endif %}</a></li>
+                        {% endfor %}
+                        </ul>
+                      </li>
                   {% else %}
-                  <li><a tabindex="-1" href="/">Login</a></li>        
+                  <li role="presentation" class="{{item.active}}" >
+                    <a href="{{item.url}}">{{item.label}} {% if item.medalla %}<span class="label label-{{item.medalla.tipus}}">{{ item.medalla.valor }}</span>{% endif %}</a> 
+                  </li> 
                   {% endif %}
-              </ul>
-            </div>
-          </li>
-		    </ul>
-      </div> <!-- /.nav-collapse -->	  
-  </div><!-- /.navbar -->
- 
-</div> 
+                {% endfor %}      
+                </ul>
+                </div>
+                </div>
+              </li>
+    		    </ul>
+          </div> <!-- /.nav-collapse -->	  
+      </div><!-- /.navbar -->
+     
+    </div>
+      {% endif %}
 
-
-<div class="row">
-
-  {% if menu.subitems %}
-  <div class="col-md-2">
-
-  <ul class="nav nav-pills nav-stacked hidden-print" id="submenu">
-    {% for item in menu.subitems %}
-        {% if item.subsubitems %}
-        <li role="presentation" class="dropdown {{item.active}}" >
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{item.label}} {% if item.medalla %}<span class="label label-{{item.medalla.tipus}}">{{ item.medalla.valor }}</span>{% endif %} <span class="caret" {% if item.active %} style="border-top:4px solid white;" {% endif %}></span></a>
-          <ul class="dropdown-menu" role="menu">
-          {% for subsubitem in item.subsubitems %}
-            <li><a href="{{subsubitem.url}}" >{{subsubitem.label}} {% if subsubitem.medalla %}<span class="label label-{{item.medalla.tipus}}">{{ subsubitem.medalla.valor }}</span>{% endif %}</a></li>
-          {% endfor %}
-          </ul>
-        </li>
-		{% else %}
-		<li role="presentation" class="{{item.active}}" >
-		  <a href="{{item.url}}">{{item.label}} {% if item.medalla %}<span class="label label-{{item.medalla.tipus}}">{{ item.medalla.valor }}</span>{% endif %}</a> 
-		</li> 
-		{% endif %}
-	{% endfor %}   		
-  </ul>
-  </div>
-
-  <div class="col-md-10">
-  {% else%}
-  <div class="col-md-12">
-  {% endif %}
+</div>
 
 
 

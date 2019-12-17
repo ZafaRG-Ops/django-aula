@@ -10,8 +10,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <link rel="stylesheet" href="{{STATIC_URL}}bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{STATIC_URL}}glyphicons/css/bootstrap-glyphicons.css">
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+
+
 <title>django-aula | {% block title %}{% endblock %}</title>
 
 <script src="{{STATIC_URL}}jquery/jquery-2.1.4.min.js"></script>
@@ -30,18 +41,14 @@ $.fn.bootstrapDP = null;
 {% block extrahead %} {% endblock %}
 
 <style type="text/css">
-  container { background-color: white; }
-  .select2-container {width: 100% !important;}
+  .container { background-color: white; }
+  .select2-container {width: 60% !important;}
 </style>
 <link href="{{STATIC_URL}}static-select2/css/select2.min_new.css" type="text/css" media="screen" rel="stylesheet" />
 </head>
+<!--fondo al momento de seleccionar algo dentro del menu lateral-->
+<body {%if l4%}style="background-color:black;"{%endif%}>
 
-<body {%if l4%}style="background-color:#FF0000;"{%endif%}>
-
-<!-- <br>
-<br>
-<br> -->
-<br>
   <div class="container" {%if l4%}style="background-color:#FFFFFF;"{%endif%}> 
 
 	{% if messages %}
@@ -52,12 +59,19 @@ $.fn.bootstrapDP = null;
 	</ul>
 	{% endif %}  	
   
+
+
+
+  <div class="container-md-8"  id="menu">
+
 	{% include "menu.html" %}
+  </div>
 
 
+  <div id="content">
     {% block content %}
 
-
+  </div>
     {% endblock %}
   
 
