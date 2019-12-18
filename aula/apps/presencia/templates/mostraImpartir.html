@@ -18,7 +18,7 @@
 {% endblock %}
  
 {% block content  %}
-	<p class="well well-small" style="width: 80%;float: right;">
+	<p class="well well-small" style="width: 91%;float: right;">
   	<span class="glyphicon glyphicon-user"></span> {{ professor }}
   </p>
 	
@@ -94,7 +94,7 @@
     {% endfor %}
 
 
-	<div class="row">
+	<div class="row" style="float: right;position: relative;margin-right: 10%">
 	  <div class="col-sm-2 col-xs-12"></div>
 	  {% for dia_setmana, dia_complet, esDataActual in calendari %}
 		  <div class="col-sm-2 {% if not esDataActual %}hidden-xs{% endif %}">
@@ -104,7 +104,7 @@
 	</div>
 
   <!-- Cal fer dos bucles per a que es mostri bé -->
-  <ul class="pagination visible-xs">
+  <ul class="pagination visible-xs" style="float: right;">
 	  {% for  moment, altre_data, visiblePhone, visibleTabletiDesktop in altres_moments %}
       {% if visiblePhone %}
         <li>
@@ -113,7 +113,7 @@
       {% endif %}
     {% endfor %}
 	</ul>
-	<ul class="pagination hidden-xs">
+	<ul class="pagination hidden-xs" style="float: right;">
 	  {% for  moment, altre_data, visiblePhone, visibleTabletiDesktop in altres_moments %}
       {% if visibleTabletiDesktop %}
         <li>
