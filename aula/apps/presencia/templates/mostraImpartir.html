@@ -19,7 +19,15 @@
  
 {% block content  %}
 	<p class="well well-small" style="width: 91%;float: right;">
-  	<span class="glyphicon glyphicon-user"></span> {{ professor }}
+  	<span class="glyphicon glyphicon-user"></span> {{ professor }} <br>
+            <script>
+                var d= new Date();
+                var f = d.getFullYear()+"/"+d.getMonth()+"/"+d.getDate();
+                //trozo de hora automatica
+
+                var h = d.getHours()+":"+d.getMinutes();
+                document.write(f+"\n"+h);
+            </script>
   </p>
 	
 	<div class="row" style="padding-bottom: 5px; width: 80%;float: right;">

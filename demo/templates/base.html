@@ -27,6 +27,7 @@ $.fn.bootstrapDP = null;
       document.location = url;
     }
   }
+
 </script>
 
 {% block extrahead %} {% endblock %}
@@ -64,9 +65,11 @@ $.fn.bootstrapDP = null;
     {% endblock %}
 
   {% if user.is_authenticated %}  
+
   <div class="row">
-  	<a class="btn btn-warning btn-large" style="margin-top:10px; width: 100%;" data-toggle="modal" href="/logout">Aquesta és la web demo de -djAu-</a>
-      My timeoff[{{ my_timeoff }}]
+  	<a class="btn btn-warning btn-large" style="margin-top:10px; width: 88%; float: right; margin-right: 15px;" data-toggle="modal" href="/logout">INS Joan d' Austria</a>
+
+      
   </div>
   {% endif %}
   
