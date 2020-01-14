@@ -1,0 +1,3 @@
+aula/templates/formset.html --> Aula/Incidencies/Nova incidencia y Recull expulsio
+aula/templates/form.html --> Aula/materies/*
+aula/templates/reportTabs.html --> Aula/Alumnes

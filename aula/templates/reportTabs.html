@@ -17,26 +17,27 @@
 {% block content  %}
 	{% block prereport  %}{% endblock %}
 	
-	<ul class="nav nav-tabs" id="reportTabs">
-	  {% for taula in report %}
-	  <li class="{% if forloop.first %}  active{% endif %}" ><a href="#tabs{{taula.codi}}" data-toggle="tab">{{taula.tabTitle}}</a></li>
-	  {% endfor %}
-	</ul>
+	
 
-	<div class="tab-content">
+	<div class="tab-content" style="width: 91%;float: right;">
+    <ul class="nav nav-tabs" id="reportTabs" >
+      {% for taula in report %}
+      <li class="{% if forloop.first %}  active{% endif %}" ><a href="#tabs{{taula.codi}}" data-toggle="tab">{{taula.tabTitle}}</a></li>
+      {% endfor %}
+    </ul>
 		
 	{% for taula in report %}
 	
-	  <div class="tab-pane {% if forloop.first %}  active{% endif %}"  id="tabs{{taula.codi}}">
+	  <div class="tab-pane {% if forloop.first %}  active{% endif %}"  id="tabs{{taula.codi}}" >
 	  	
-	  <div id="div_{{taula.codi}}"></div>	
+	  <div id="div_{{taula.codi}}" ></div>	
 	  	
 	  	
 	  {% if taula.titol.enllac %}<a href="{{ taula.titol.enllac }}">{%endif%}
 	  {{ taula.titol.contingut }}
 	  {% if taula.titol.enllac %}</a>{%endif%}
 	  {% if taula.titol.codi %}<a name="{{taula.titol.codi}}"> </a>{% endif %}	
-	  <table class="table table-striped" style="margin-top: 20px;" >
+	  <table class="table table-striped" style="margin-top: 20px; float: right;" >
 	
 		  <tr>
 		  {% for capcelera in taula.capceleres %}
