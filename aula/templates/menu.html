@@ -1,5 +1,33 @@
 {% load customTemplateTags %}
-
+<style type="text/css">
+  .casa{
+    font-size: 13px;
+    color: white;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+  }
+  .extra{
+    background-color: grey;
+    border: none;
+  }
+  .navbar-inverse .navbar-nav>li>a{
+    color:white;
+    font-size: 13px;
+    margin-left: 4px;
+    margin-right:4px;
+    margin-top:1px;
+    margin-bottom:1px;
+  }
+  .navbar-inverse .navbar-nav>li>a:hover{
+    background-color: #5aa2e0;
+    border-radius: 5px;
+  }
+  .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+    background-color: #337ab7;
+    border-radius: 5px;
+  }
+</style>
 <div id="header"> 
    	
   <header class="navbar navbar-inverse"> 
@@ -12,16 +40,22 @@
 	      <span class="icon-bar"></span>
 	      </button>
 	      <a href="/" class="navbar-brand">django-aula</a>
-	    </div>         
-      
+	    </div>
+
       <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav">
-        {% for item in menu.items %}
-	      <li  class="{{item.active}}" >
-		      <a href="{{item.url}}">{{item.label}} {% if item.alerta %}<span class="glyphicon glyphicon-exclamation-sign" style="color:red"></span>{%endif%} </a> 
-	      </li> 
-		{% endfor %}
-		</ul>
+        <ul class="nav navbar-nav" >
+          <div class="dropdown casa">
+            <button class="btn btn-primary dropdown-toggle extra" type="button" data-toggle="dropdown">
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu navbar-inverse navbar-nav">
+              {% for item in menu.items %}
+        	      <li  class="{{item.active}}" >
+        		      <a href="{{item.url}}">{{item.label}} {% if item.alerta %}<span class="glyphicon glyphicon-exclamation-sign" style="color:red"></span>{%endif%} </a> 
+        	      </li> 
+      		    {% endfor %}
+            </ul>
+          </div>
+		    </ul>
 	      
 		<ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
