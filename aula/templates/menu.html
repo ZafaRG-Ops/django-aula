@@ -1,5 +1,17 @@
 {% load customTemplateTags %}
 <style type="text/css">
+  #submenu{
+    display: inline-flex;
+    position: absolute;
+    margin-left: 50px;
+    margin-top: -23px;
+  }
+  #submenu > li > a {
+    color: white;
+  }
+  #submenu > li > a:hover, #submenu > li > a:focus {
+    background-color: #5aa2e0;
+  }
   .casa{
     font-size: 13px;
     color: white;
@@ -30,7 +42,7 @@
 </style>
 <div id="header"> 
    	
-  <header class="navbar navbar-inverse"> 
+  <header class="navbar navbar-inverse" > 
 
 	    <div class="navbar-header">
 	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -39,13 +51,13 @@
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	      </button>
-	      <a href="/" class="navbar-brand">django-aula</a>
+	      <a href="/" class="navbar-brand">#</a>
 	    </div>
 
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav" >
           <div class="dropdown casa">
-            <button class="btn btn-primary dropdown-toggle extra" type="button" data-toggle="dropdown">
+            <button class="btn btn-primary dropdown-toggle extra" type="button" data-toggle="dropdown">Menu
             <span class="caret"></span></button>
             <ul class="dropdown-menu navbar-inverse navbar-nav">
               {% for item in menu.items %}
@@ -55,14 +67,39 @@
       		    {% endfor %}
             </ul>
           </div>
-		    </ul>
+          {% if menu.subitems %}
+          <div class="col-lg-2" id="submenu">
+
+          <ul class="nav nav-pills hidden-print" id="submenu">
+            {% for item in menu.subitems %}
+                {% if item.subsubitems %}
+                <li role="presentation" class="dropdown {{item.active}}" >
+                  <a href="#" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{item.label}} {% if item.medalla %}<span class="label label-{{item.medalla.tipus}}">{{ item.medalla.valor }}</span>{% endif %} <span class="caret" {% if item.active %} style="border-top:4px solid white;" {% endif %}></span></a>
+                  <ul class="dropdown-menu" role="menu" >
+                  {% for subsubitem in item.subsubitems %}
+                    <li ><a href="{{subsubitem.url}}" >{{subsubitem.label}} {% if subsubitem.medalla %}<span class="label label-{{item.medalla.tipus}}">{{ subsubitem.medalla.valor }}</span>{% endif %}</a></li>
+                  {% endfor %}
+                  </ul>
+                </li>
+            {% else %}
+            <li role="presentation" class="{{item.active}}">
+              <a href="{{item.url}}" class="btn btn-secondary">{{item.label}} {% if item.medalla %}<span class="label label-{{item.medalla.tipus}}">{{ item.medalla.valor }}</span>{% endif %}</a> 
+            </li> 
+            {% endif %}
+          {% endfor %}      
+          </ul>
+          </div>
+
+          <div class="col-md-10">
+          {% else%}
+          <div class="col-md-12">
+          {% endif %}
+        </ul>
 	      
 		<ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
             <li class="dropdown">    	
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                {{menu.nomusuari}}
-                <b class="caret"></b>
+              <a href="#" class="glyphicon glyphicon-user dropdown-toggle" data-toggle="dropdown">
               </a>
               <ul class="dropdown-menu">
 	              {%if not menu.esalumne %}<li><a href="/usuaris/canviDadesUsuari/">El meu nom i correu.</a></li>{% endif %}
@@ -76,10 +113,11 @@
 						<li class="divider"></li>
          		        	<li><a href="/usuaris/impersonacio/">Impersonació / Level4</a></li>
 		              {% endifusergroup %}
-	              {% endif %}   
+	              {% endif %}  
+                  <li><a href="/logout/"><span>Salir</span></a></li> 
               </ul>
             </li>
-            <li><a href="/logout/"><span class="glyphicon glyphicon-log-out"></span></a></li>
+            
           {% else %}
 	        <li><a tabindex="-1" href="/">Login</a></li>	      
           {% endif %}
@@ -94,33 +132,7 @@
 
 <div class="row">
 
-  {% if menu.subitems %}
-  <div class="col-md-2">
-
-  <ul class="nav nav-pills nav-stacked hidden-print" id="submenu">
-    {% for item in menu.subitems %}
-        {% if item.subsubitems %}
-        <li role="presentation" class="dropdown {{item.active}}" >
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{item.label}} {% if item.medalla %}<span class="label label-{{item.medalla.tipus}}">{{ item.medalla.valor }}</span>{% endif %} <span class="caret" {% if item.active %} style="border-top:4px solid white;" {% endif %}></span></a>
-          <ul class="dropdown-menu" role="menu">
-          {% for subsubitem in item.subsubitems %}
-            <li><a href="{{subsubitem.url}}" >{{subsubitem.label}} {% if subsubitem.medalla %}<span class="label label-{{item.medalla.tipus}}">{{ subsubitem.medalla.valor }}</span>{% endif %}</a></li>
-          {% endfor %}
-          </ul>
-        </li>
-		{% else %}
-		<li role="presentation" class="{{item.active}}" >
-		  <a href="{{item.url}}">{{item.label}} {% if item.medalla %}<span class="label label-{{item.medalla.tipus}}">{{ item.medalla.valor }}</span>{% endif %}</a> 
-		</li> 
-		{% endif %}
-	{% endfor %}   		
-  </ul>
-  </div>
-
-  <div class="col-md-10">
-  {% else%}
-  <div class="col-md-12">
-  {% endif %}
+  
 
 
 
