@@ -242,6 +242,20 @@ def calcula_menu( user , path ):
                           ("Reprograma", 'administracio__sincronitza__regenerar_horaris', di , None  ),
                         ),
                       ),
+                      (
+       "Descarrega",                                # subitem_id
+       "administracio__descarrega__blanc",          # subitem_url
+       di,                                          # subitem_condicio (permissos)
+       None,                                        # alerta
+       (                                            # subitems
+           (
+               "Alumnes",                           # subsubitem_id
+               "administracio__descarrega__alumnes",# subsubitem_url
+               di,                                  # subsubitem_condicio
+               None                                 # alerta
+           ),
+       ),
+    ),
                       ("Reset Passwd", 'administracio__professorat__reset_passwd', di, None, None ),
                       ("Càrrega Inicial", 'administracio__configuracio__carrega_inicial', di, None, None ),
                       ("Promocions", 'administracio__promocions__llista', di, None, None),

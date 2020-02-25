@@ -187,6 +187,7 @@ INSTALLED_APPS_DJANGO = [
 INSTALLED_APPS_AULA = [
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'aula.apps.descarregues',
     'aula.apps.missatgeria',
     'aula.apps.alumnes',
     'aula.apps.assignatures',

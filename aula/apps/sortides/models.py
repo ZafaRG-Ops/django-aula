@@ -6,14 +6,14 @@ from aula.apps.sortides.business_rules.sortida import clean_sortida
 from aula.apps.alumnes.models import Alumne
 from django.apps import apps
 from django.db.models import Q
-from django.utils.encoding import python_2_unicode_compatible
+# from django.utils.encoding import python_2_unicode_compatible
 from django.conf import settings
 
 from aula.settings import CUSTOM_SORTIDES_PAGAMENT_ONLINE, CUSTOM_SORTIDES_PAGAMENT_CAIXER
 from aula.utils.tools import unicode
 
 
-@python_2_unicode_compatible
+# @python_2_unicode_compatible
 class Sortida(models.Model):
 
     TIPUS_ACTIVITAT_CHOICES = (
@@ -194,7 +194,7 @@ class Sortida(models.Model):
 
         return l
 
-@python_2_unicode_compatible
+# @python_2_unicode_compatible
 class NotificaSortida( models.Model):
     alumne = models.ForeignKey( Alumne, on_delete=models.CASCADE )
     sortida = models.ForeignKey(Sortida, on_delete=models.CASCADE )

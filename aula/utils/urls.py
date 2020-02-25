@@ -15,6 +15,8 @@ urlpatterns = [
     url(r'^opcionsSincro/$', blanc,
         name ="administracio__sincronitza__blanc" )    ,
 
+    url(r'^opcionsDescarrega/$', blanc,
+        name ="administracio__descarrega__blanc" )    ,
 
 
                        

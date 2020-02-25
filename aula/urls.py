@@ -14,6 +14,7 @@ site_media_site_css = os.path.join(os.path.dirname(__file__), 'site-css' )
 site_media_web_demo = os.path.join(os.path.dirname(__file__), '../demo/static-web/demo' )
 
 urlpatterns = [
+    url(r'^descarregues/', include('aula.apps.descarregues.urls')),
     url(r'^keepalive$', keepalive, name="blanc__blanc__keepalive"),
     url(r'^select2/', include('aula.django_select2.urls')),
     url(r'^menu/$', menu),
